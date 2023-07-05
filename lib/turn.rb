@@ -41,7 +41,7 @@ class Turn
             else
                 player2
             end
-        elsif turn.type == :mutually_assured_destruction
+        elsif self.type == :mutually_assured_destruction
             "No Winner"
         end
     end
@@ -63,11 +63,11 @@ class Turn
             @spoils_of_war.push(player1card0, player1card1, player1card2, player2card0, player2card1, player2card2)
         elsif self.type == :mutually_assured_destruction
             3.times do
-                player1.deck.shift
+                player1.deck.cards.shift
             end
 
             3.times do
-                player2.deck.shift
+                player2.deck.cards.shift
             end
         end
     end
