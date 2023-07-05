@@ -2,8 +2,6 @@ require './lib/card'
 require './lib/deck'
 require './lib/player'
 require './lib/turn'
-require './lib/game'
-
 
 suits = [:heart, :spade, :diamond, :club]
 value = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
@@ -35,10 +33,11 @@ player2 = Player.new("Aurora", deck2)
 puts "Welcome to War! (or Peace) This game will be played with 52 cards.\nThe players today are #{player1.name} and #{player2.name}.\nType 'GO' to start the game!\n------------------------------------------------------"
 
 word = gets.chomp
+turn = Turn.new(player1, player2)
 
 loop do
     if word == "GO"
-        game.start
+        turn.start
         break
     else
         p "Incorrect, try again!"

@@ -74,6 +74,24 @@ class Turn
 
     def award_spoils(winner)
         winner.deck.cards.push(spoils_of_war).flatten!
+        spoils_of_war = []
+    end
+
+    def start
+        winner = self.winner
+        type = self.type
+        pile_cards
+        award_spoils(winner)
+
+        
+        if type == :basic
+            p "Turn 1: #{winner.name} won 2 cards"
+        elsif type == :war
+            p "Turn 1: WAR - #{winner.name} won 6 cards"
+        elsif type == :mutually_assured_destruction
+            p "Turn 1: *mutually assured destruction* 6 cards removed from play"
+        end
+
     end
 
 end
