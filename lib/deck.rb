@@ -30,7 +30,7 @@ class Deck
         cards_total = cards.length.to_f
         high_cards_total = high_ranking_cards.length.to_f
 
-        ((high_cards_total/cards_total) * 100).ceil(2)
+        ((high_cards_total/cards_total) * 100).round(2)
     end
 
     def remove_card
