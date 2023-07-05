@@ -10,7 +10,7 @@ class Deck
         cards[index].rank
     end
 
-    def high_ranking_cards    
+    def high_ranking_cards
         high_cards = []
         i = 0
 
@@ -24,6 +24,13 @@ class Deck
         end
         
         high_cards
+    end
+
+    def percent_high_ranking
+        cards_total = cards.length.to_f
+        high_cards_total = high_ranking_cards.length.to_f
+
+        ((high_cards_total/cards_total) * 100).ceil(2)
     end
 
 end
