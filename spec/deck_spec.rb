@@ -85,6 +85,34 @@ RSpec.describe Deck do
 
         expect(deck.cards). to eq([card2, card3])
     end
+
+    it "returns high ranking cards two deck" do
+        card1 = Card.new(:diamond, 'Queen', 12)
+        card2 = Card.new(:spade, '3', 3)
+        card3 = Card.new(:heart, 'Ace', 14)
+        cards = [card1, card2, card3]
+        
+        deck = Deck.new(cards)
+
+        deck.remove_card
+
+        example_array = [card3]
+
+        expect(deck.high_ranking_cards).to eq(example_array)
+    end
+
+    it "returns percent of high ranking cards two deck" do
+        card1 = Card.new(:diamond, 'Queen', 12)
+        card2 = Card.new(:spade, '3', 3)
+        card3 = Card.new(:heart, 'Ace', 14)
+        cards = [card1, card2, card3]
+        
+        deck = Deck.new(cards)
+
+        deck.remove_card
+
+        expect(deck.percent_high_ranking).to eq(50.0)
+    end
     
 end
 
