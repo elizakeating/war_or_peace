@@ -46,4 +46,30 @@ class Turn
         end
     end
 
+    def pile_cards
+        if self.type == :basic
+            player1card = player1.deck.cards.shift
+            player2card = player2.deck.cards.shift
+
+            @spoils_of_war.push(player1card, player2card)
+        elsif self.type == :war
+            player1card0 = player1.deck.cards.shift
+            player1card1 = player1.deck.cards.shift
+            player1card2 = player1.deck.cards.shift
+            player2card2 = player2.deck.cards.shift
+            player2card2 = player2.deck.cards.shift
+            player2card2 = player2.deck.cards.shift
+
+            @spoils_of_war.push(player1card0, player1card1, player1card2, player2card0, player2card1, player2card2)
+        elsif self.type == :mutually_assured_destruction
+            3.times do
+                player1.deck.shift
+            end
+
+            3.times do
+                player2.deck.shift
+            end
+        end
+    end
+
 end
