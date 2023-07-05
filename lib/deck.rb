@@ -33,6 +33,10 @@ class Deck
         ((high_cards_total/cards_total) * 100).ceil(2)
     end
 
+    def remove_card
+        cards.shift
+    end
+
 end
 
 # require './lib/card'
