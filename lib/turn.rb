@@ -72,4 +72,8 @@ class Turn
         end
     end
 
+    def award_spoils(winner)
+        winner.deck.cards.push(spoils_of_war).flatten!
+    end
+
 end
