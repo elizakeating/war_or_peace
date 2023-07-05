@@ -32,8 +32,6 @@ deck2 = Deck.new(deck2_cards)
 player1 = Player.new("Megan", deck1)
 player2 = Player.new("Aurora", deck2)
 
-game = Game.new
-
 puts "Welcome to War! (or Peace) This game will be played with 52 cards.\nThe players today are #{player1.name} and #{player2.name}.\nType 'GO' to start the game!\n------------------------------------------------------"
 
 word = gets.chomp
