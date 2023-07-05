@@ -56,8 +56,8 @@ class Turn
             player1card0 = player1.deck.cards.shift
             player1card1 = player1.deck.cards.shift
             player1card2 = player1.deck.cards.shift
-            player2card2 = player2.deck.cards.shift
-            player2card2 = player2.deck.cards.shift
+            player2card0 = player2.deck.cards.shift
+            player2card1 = player2.deck.cards.shift
             player2card2 = player2.deck.cards.shift
 
             @spoils_of_war.push(player1card0, player1card1, player1card2, player2card0, player2card1, player2card2)

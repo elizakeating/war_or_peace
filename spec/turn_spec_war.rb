@@ -16,7 +16,7 @@ RSpec.describe Turn do
         card8 = Card.new(:diamond, '2', 2)
 
         deck1 = Deck.new([card1, card2, card5, card8])
-        deck2 = Deck.new([card3, card4, card6, card7])
+        deck2 = Deck.new([card4, card3, card6, card7])
 
         player1 = Player.new("Megan", deck1)
         player2 = Player.new("Aurora", deck2)
@@ -52,7 +52,7 @@ RSpec.describe Turn do
         card8 = Card.new(:diamond, '2', 2)
 
         deck1 = Deck.new([card1, card2, card5, card8])
-        deck2 = Deck.new([card3, card4, card6, card7])
+        deck2 = Deck.new([card4, card3, card6, card7])
 
         player1 = Player.new("Megan", deck1)
         player2 = Player.new("Aurora", deck2)
@@ -75,14 +75,14 @@ RSpec.describe Turn do
         card8 = Card.new(:diamond, '2', 2)
 
         deck1 = Deck.new([card1, card2, card5, card8])
-        deck2 = Deck.new([card3, card4, card6, card7])
+        deck2 = Deck.new([card4, card3, card6, card7])
 
         player1 = Player.new("Megan", deck1)
         player2 = Player.new("Aurora", deck2)
 
         turn = Turn.new(player1, player2)
 
-        expect(turn.type).to eq(:basic)
+        expect(turn.type).to eq(:war)
     end
 
     it "returns the winner" do
@@ -96,7 +96,7 @@ RSpec.describe Turn do
         card8 = Card.new(:diamond, '2', 2)
 
         deck1 = Deck.new([card1, card2, card5, card8])
-        deck2 = Deck.new([card3, card4, card6, card7])
+        deck2 = Deck.new([card4, card3, card6, card7])
 
         player1 = Player.new("Megan", deck1)
         player2 = Player.new("Aurora", deck2)
@@ -105,7 +105,7 @@ RSpec.describe Turn do
 
         winner = turn.winner
         
-        expect(winner).to eq(player1)
+        expect(winner).to eq(player2)
     end
 
     it "piles cards" do
@@ -119,7 +119,7 @@ RSpec.describe Turn do
         card8 = Card.new(:diamond, '2', 2)
 
         deck1 = Deck.new([card1, card2, card5, card8])
-        deck2 = Deck.new([card3, card4, card6, card7])
+        deck2 = Deck.new([card4, card3, card6, card7])
 
         player1 = Player.new("Megan", deck1)
         player2 = Player.new("Aurora", deck2)
@@ -128,7 +128,9 @@ RSpec.describe Turn do
 
         turn.pile_cards
 
-        expect(turn.spoils_of_war).to eq([card1, card3])
+        correct_array = [card1, card2, card5, card4, card3, card6]
+
+        expect(turn.spoils_of_war).to eq(correct_array)
     end
 
     it "awards spoils" do
@@ -142,7 +144,7 @@ RSpec.describe Turn do
         card8 = Card.new(:diamond, '2', 2)
 
         deck1 = Deck.new([card1, card2, card5, card8])
-        deck2 = Deck.new([card3, card4, card6, card7])
+        deck2 = Deck.new([card4, card3, card6, card7])
 
         player1 = Player.new("Megan", deck1)
         player2 = Player.new("Aurora", deck2)
@@ -155,10 +157,10 @@ RSpec.describe Turn do
         
         turn.award_spoils(winner)
 
-        correct_array = [card2, card5, card8, card1, card3]
+        correct_array = [card7, card1, card2, card5, card4, card3, card6]
 
-        expect(player1.deck.cards).to eq(correct_array)
-        expect(player2.deck.cards).to eq([card4, card6, card7])      
+        expect(player1.deck.cards).to eq([card8])
+        expect(player2.deck.cards).to eq(correct_array)      
     end
 
 end
