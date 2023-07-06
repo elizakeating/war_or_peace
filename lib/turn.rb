@@ -73,8 +73,13 @@ class Turn
     end
 
     def award_spoils(winner)
-        winner.deck.cards.push(spoils_of_war).flatten!
-        spoils_of_war = []
+        if winner == "No Winner"
+            spoils_of_war.clear()
+        else
+            spoils_of_war.count.times do
+                winner.deck.cards << spoils_of_war.shift
+            end
+        end
     end
 
     def start
